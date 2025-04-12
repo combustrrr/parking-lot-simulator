@@ -15,7 +15,7 @@ const StrategySelector: React.FC<StrategySelectorProps> = ({
 }) => {
   return (
     <div>
-      <label className="block mb-2 font-medium">Allocation Strategy:</label>
+      <label className="block mb-2 font-medium" htmlFor="strategySelect">Select Allocation Strategy:</label>
       <div className="flex gap-2">
         {(['best-fit', 'first-fit', 'worst-fit'] as Strategy[]).map(
           (strategy) => (
