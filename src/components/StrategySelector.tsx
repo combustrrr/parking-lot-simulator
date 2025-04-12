@@ -21,10 +21,8 @@ const StrategySelector: React.FC<StrategySelectorProps> = ({
           (strategy) => (
             <button
               key={strategy}
-              className={`border rounded-md px-3 py-2 ${
-                allocationStrategy === strategy
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-white text-black'
+              className={`strategy-button ${
+                allocationStrategy === strategy ? 'active' : ''
               }`}
               onClick={() => setAllocationStrategy(strategy)}
               title={strategyDescriptions[strategy]}

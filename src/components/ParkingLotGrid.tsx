@@ -4,9 +4,6 @@
  * Displays a visual grid of parking spaces, showing occupancy status (e.g., vehicle type or free)
  * to help managers monitor the lot. Integrates with allocation data from ParkingLot.ts.
  * 
- * @author Sarthak Kulkarni (23101B0019)
- * @author Pulkit Saini (23101B0021)
- * @author Dhruv Tikhande (23101B00005)
  * @version 0.2.0
  */
 
@@ -44,7 +41,7 @@ const ParkingLotGrid: React.FC<ParkingLotGridProps> = ({ spaces, allocations, ve
         {spaces.map((size, index) => (
           <div
             key={index}
-            className="border p-4 rounded-md bg-white shadow-sm text-center"
+            className={`parking-space ${allocations.some(alloc => alloc.spaceIndex === index) ? 'occupied' : 'free'}`}
           >
             <p className="font-medium text-gray-800">Space {index + 1} (Size {size})</p>
             <p className="text-sm text-gray-600">{getSpaceStatus(index)}</p>

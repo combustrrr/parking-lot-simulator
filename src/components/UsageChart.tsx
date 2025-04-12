@@ -63,9 +63,7 @@ const UsageChart: React.FC<UsageChartProps> = ({ history }) => {
 
   return (
     <div className="chart-container">
-      <div style={{ height: '300px' }}>
-        <Line data={data} options={options} />
-      </div>
+      <Line data={data} options={options} />
     </div>
   );
 };

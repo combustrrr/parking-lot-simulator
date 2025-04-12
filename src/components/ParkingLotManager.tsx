@@ -63,8 +63,8 @@ const ParkingLotManager: React.FC<ParkingLotManagerProps> = ({
             <li key={index}>{result}</li>
           ))}
         </ul>
-        {error && <p className="error">{error}</p>}
-        {feedback && <p className="feedback">{feedback}</p>}
+        {error && <p className="text-red-500">{error}</p>}
+        {feedback && <p className="text-green-500">{feedback}</p>}
       </div>
       <div>
         <button onClick={handleRunSimulation}>Run Simulation</button>

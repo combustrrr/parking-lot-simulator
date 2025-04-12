@@ -51,9 +51,7 @@ const EfficiencyChart: React.FC<EfficiencyChartProps> = ({ successRate }) => {
 
   return (
     <div className="chart-container">
-      <div style={{ height: '300px' }}>
-        <Pie data={data} options={options} />
-      </div>
+      <Pie data={data} options={options} />
     </div>
   );
 };

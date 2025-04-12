@@ -9,8 +9,8 @@ interface ActionButtonsProps {
 const ActionButtons: React.FC<ActionButtonsProps> = ({ handleRunSimulation, handleReset }) => {
   return (
     <div className="flex gap-2">
-      <Button onClick={handleRunSimulation}>Allocate Vehicles</Button>
-      <Button variant="secondary" onClick={handleReset}>
+      <Button className="action-button" onClick={handleRunSimulation}>Allocate Vehicles</Button>
+      <Button className="action-button secondary" onClick={handleReset}>
         Reset
       </Button>
     </div>

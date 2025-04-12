@@ -27,7 +27,7 @@ const VehicleQueueManager: React.FC<VehicleQueueManagerProps> = ({
         <select
           value={vehicleType}
           onChange={(e: ChangeEvent<HTMLSelectElement>) => setVehicleType(e.target.value as VehicleType)}
-          className="border rounded-md px-3 py-2 bg-white text-black"
+          className="vehicle-select"
         >
           {Object.entries(vehicleTypeSizes).map(([type, size]) => (
             <option key={type} value={type}>
@@ -35,7 +35,7 @@ const VehicleQueueManager: React.FC<VehicleQueueManagerProps> = ({
             </option>
           ))}
         </select>
-        <Button onClick={handleAddVehicle}>Add to Queue</Button>
+        <Button className="vehicle-button" onClick={handleAddVehicle}>Add to Queue</Button>
       </div>
 
       {vehicleQueue.length > 0 && (
@@ -51,7 +51,7 @@ const VehicleQueueManager: React.FC<VehicleQueueManagerProps> = ({
                   (Size {size})
                 </span>
                 <Button
-                  variant="destructive"
+                  className="vehicle-button destructive"
                   size="sm"
                   onClick={() => handleRemoveVehicle(index)}
                 >

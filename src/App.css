@@ -100,3 +100,63 @@ label {
     max-width: 100%;
   }
 }
+
+/* Styles for buttons in StrategySelector.tsx */
+.strategy-button {
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+}
+
+.strategy-button.active {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+/* Styles for select and buttons in VehicleQueueManager.tsx */
+.vehicle-select {
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.vehicle-button {
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+}
+
+.vehicle-button.destructive {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+/* Styles for grid and space status in ParkingLotGrid.tsx */
+.parking-space {
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.parking-space.occupied {
+  background-color: #f3f4f6;
+}
+
+.parking-space.free {
+  background-color: #ffffff;
+}
+
+/* Styles for chart containers in EfficiencyChart.tsx, OccupancyChart.tsx, and UsageChart.tsx */
+.chart-container {
+  height: 300px;
+}
