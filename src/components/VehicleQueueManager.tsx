@@ -22,9 +22,10 @@ const VehicleQueueManager: React.FC<VehicleQueueManagerProps> = ({
 }) => {
   return (
     <div>
-      <label className="block mb-1 font-medium">Manage Vehicles:</label>
+      <label htmlFor="vehicle-select" className="block mb-1 font-medium">Manage Vehicles:</label>
       <div className="flex gap-2 mb-2">
         <select
+          id="vehicle-select"
           value={vehicleType}
           onChange={(e: ChangeEvent<HTMLSelectElement>) => setVehicleType(e.target.value as VehicleType)}
           className="vehicle-select"
