@@ -18,7 +18,7 @@ export default defineConfig({
     },
   },
   server: {
-    http2: true,
+    https: true,
   },
   build: {
     minify: 'terser',

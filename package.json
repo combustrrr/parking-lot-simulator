@@ -12,7 +12,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "minify": "vite build --minify"
+    "minify": "vite build --minify",
+    "enforce-https": "vite --https"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
