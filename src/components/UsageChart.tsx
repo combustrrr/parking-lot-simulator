@@ -38,7 +38,6 @@ const UsageChart: React.FC<UsageChartProps> = ({ history }) => {
         data: history,
         borderColor: 'rgba(153, 102, 255, 0.6)',
         backgroundColor: 'rgba(153, 102, 255, 0.2)',
-        fill: true,
         tension: 0.3,
       },
     ],
@@ -58,6 +57,7 @@ const UsageChart: React.FC<UsageChartProps> = ({ history }) => {
         beginAtZero: true,
         ticks: { stepSize: 1 },
       },
+      
     },
   };
 

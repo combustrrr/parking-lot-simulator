@@ -1,16 +1,14 @@
 /**
  * Parking Lot Manager - Allocation Logic
- * 
+ *
  * This class implements the core logic for allocating vehicles to parking spaces
- * using best-fit, first-fit, and worst-fit strategies, designed to assist parking
- * managers. It mirrors memory allocation algorithms from operating systems, with
- * spaces representing parking slots and vehicles representing processes.
- * 
- * @author Sarthak Kulkarni (23101B0019)
- * @author Pulkit Saini (23101B0021)
- * @author Dhruv Tikhande (23101B00005)
+ * using best-fit, first-fit, and worst-fit strategies. It mirrors memory allocation
+ * algorithms from operating systems, with spaces representing parking slots and
+ * vehicles representing processes.
+ *
  * @version 0.2.0
  */
+
 
 export interface SpaceAllocation {
   vehicleSize: number;
@@ -25,22 +23,19 @@ export default class ParkingLot {
   private spaces: number[];
   private spaceAllocations: SpaceAllocation[];
   private vehicleEntryTimes: Record<string, { entryTime: Date; exitTime?: Date }> = {};
-  private vehicleQueue: string[] = [];
+  private vehicleQueue: string[];
 
-  /**
-   * Initializes the parking lot with given space sizes
-   * @param param0 Initial spaces configuration (e.g., [2, 4, 6] for Compact, Standard, Large)
-   */
-
-  
   constructor({ initialSpaces }: IParkingLot) {
     this.spaces = [...initialSpaces];
     this.spaceAllocations = [];
+    this.vehicleEntryTimes = {};
+    this.vehicleQueue = [];
   }
 
   /**
    * Allocates a vehicle to a parking space using the specified strategy
-   * @param vehicleSize Size of the vehicle (e.g., 1 for Motorcycle, 2 for Sedan)
+   * @param vehicleId Unique identifier for the vehicle
+   * @param vehicleSize Size of the vehicle
    * @param strategy Allocation strategy
    * @returns True if allocation succeeds, false otherwise
    */ 
@@ -53,11 +48,9 @@ export default class ParkingLot {
       case 'worst-fit':
         return this.allocateWorstFit(vehicleId, vehicleSize);
       default:
-        if(this.vehicleQueue.length < 5)
-        {
-          this.vehicleQueue.push(vehicleId)
+        if (this.vehicleQueue.length < 5) {
+          this.vehicleQueue.push(vehicleId);
         }
-        return false;
     }
   }
 
@@ -66,29 +59,29 @@ export default class ParkingLot {
    * @param vehicleSize Size of the vehicle
    * @returns True if allocated, false otherwise
    */ 
-  private allocateBestFit(vehicleId:string, vehicleSize: number): boolean {
+  private allocateBestFit(vehicleId: string, vehicleSize: number): boolean {
     let bestFitIndex = -1;
     let minWaste = Infinity;
 
     this.spaces.forEach((spaceSize, index) => {
       if (spaceSize >= vehicleSize && spaceSize - vehicleSize < minWaste) {
-        bestFitIndex = index;  
-        minWaste = spaceSize - vehicleSize;  
+        bestFitIndex = index;
+        minWaste = spaceSize - vehicleSize;
       }
-      
     });
 
-    return this.allocate(vehicleSize, bestFitIndex);
+    return this.allocate(vehicleId, vehicleSize, bestFitIndex);
   }
 
   /**
    * Allocates using first-fit strategy (first suitable space)
-   * @param vehicleSize Size of the vehicle
+   * @param vehicleId 
+   * @param vehicleSize 
    * @returns True if allocated, false otherwise
    */ 
-  private allocateFirstFit(vehicleId:string, vehicleSize: number): boolean {
-    const firstFitIndex = this.spaces.findIndex((spaceSize) => spaceSize >= vehicleSize);
-    return this.allocate(vehicleId,vehicleSize, firstFitIndex);
+  private allocateFirstFit(vehicleId: string, vehicleSize: number): boolean {
+    const firstFitIndex = this.spaces.findIndex(spaceSize => spaceSize >= vehicleSize);
+    return this.allocate(vehicleId, vehicleSize, firstFitIndex);
   }
 
   /**
@@ -96,18 +89,18 @@ export default class ParkingLot {
    * @param vehicleSize Size of the vehicle
    * @returns True if allocated, false otherwise
    */
-  private allocateWorstFit(vehicleId:string, vehicleSize: number): boolean {
-    let worstFitIndex = -1; 
+  private allocateWorstFit(vehicleId: string, vehicleSize: number): boolean {
+    let worstFitIndex = -1;
     let maxWaste = -1;
 
     this.spaces.forEach((spaceSize, index) => {
       if (spaceSize >= vehicleSize && spaceSize - vehicleSize > maxWaste) {
         worstFitIndex = index;
         maxWaste = spaceSize - vehicleSize;
-      }
+     }
     });
 
-    return this.allocate(vehicleSize, worstFitIndex);
+    return this.allocate(vehicleId, vehicleSize, worstFitIndex);
   }
 
   /**
@@ -116,7 +109,7 @@ export default class ParkingLot {
    * @param spaceIndex Index of the space to allocate
    * @returns True if allocated, false otherwise
    */
-  private allocate(vehicleId:string, vehicleSize: number, spaceIndex: number): boolean {
+  private allocate(vehicleId: string, vehicleSize: number, spaceIndex: number): boolean {
     if (spaceIndex !== -1 && this.spaces[spaceIndex] >= vehicleSize) {
       this.vehicleEntryTimes[vehicleId] = { entryTime: new Date() };
       this.spaces[spaceIndex] -= vehicleSize;
@@ -155,10 +148,8 @@ export default class ParkingLot {
     }
     return vehicleTimes.exitTime.getTime() - vehicleTimes.entryTime.getTime();
   }
-  
-   get getQueue(): string[] {
+
+  get getQueue(): string[] {
     return [...this.vehicleQueue];
   }
-
-  
 }
