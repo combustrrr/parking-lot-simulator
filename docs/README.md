@@ -1,6 +1,6 @@
 # Parking Lot Simulator 🚗
 
-**Version:** 0.1.0 
+**Version:** 0.1.0
 
 ---
 
@@ -89,7 +89,7 @@ Follow these steps to set up and run the project locally.
 
 1.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/yourusername/parking-lot-simulator.git # Replace with your repo URL if applicable
+    git clone https://github.com/combustrrr/parking-lot-simulator.git
     cd parking-lot-simulator
     ```
 
