@@ -31,3 +31,8 @@ Thumbs.db
 # Logs
 logs
 *.log
+
+# New files and directories to ignore
+coverage/
+*.test.js
+*.test.ts
