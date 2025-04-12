@@ -4,9 +4,6 @@
  * Displays a line chart of vehicles parked per session, helping managers track
  * parking lot usage trends over time. Uses Chart.js for visualization.
  * 
- * @author Sarthak Kulkarni (23101B0019)
- * @author Pulkit Saini (23101B0021)
- * @author Dhruv Tikhande (23101B00005)
  * @version 0.2.0
  */
 
@@ -30,12 +27,14 @@ interface UsageChartProps {
 }
 
 const UsageChart: React.FC<UsageChartProps> = ({ history }) => {
+  const filteredHistory = history.filter(size => size > 0);
+
   const data = {
-    labels: history.map((_, index) => `Session ${index + 1}`),
+    labels: filteredHistory.map((_, index) => `Session ${index + 1}`),
     datasets: [
       {
         label: 'Vehicles Parked',
-        data: history,
+        data: filteredHistory,
         borderColor: 'rgba(153, 102, 255, 0.6)',
         backgroundColor: 'rgba(153, 102, 255, 0.2)',
         tension: 0.3,

@@ -44,6 +44,8 @@ export default function App() {
     successRate: number;
   }>({ allocations: [], wastedSpace: 0, successRate: 0 });
 
+  const [parkedVehicles, setParkedVehicles] = useState<number[]>([]);
+
   const handleSpaceInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSpaceInput(value);
@@ -81,6 +83,7 @@ export default function App() {
 
     parkingLotRef.current = new ParkingLot({ initialSpaces: spaces });
     const allocations: SpaceAllocation[] = [];
+    const successfullyParked: number[] = [];
 
     vehicleQueue.forEach(size => {
       const allocated = parkingLotRef.current?.allocateSpace(
@@ -90,6 +93,7 @@ export default function App() {
       );
       if (allocated && parkingLotRef.current) {
         allocations.push(parkingLotRef.current.spaceAllocationsList[parkingLotRef.current.spaceAllocationsList.length - 1]);
+        successfullyParked.push(size);
       }
     });
 
@@ -101,6 +105,8 @@ export default function App() {
       wastedSpace,
       successRate
     });
+
+    setParkedVehicles(successfullyParked);
 
     setFeedback(
       allocations.length === vehicleQueue.length
@@ -118,6 +124,7 @@ export default function App() {
     setError('');
     setFeedback('');
     parkingLotRef.current = null;
+    setParkedVehicles([]);
   };
 
   return (
@@ -163,10 +170,7 @@ export default function App() {
             />
             <EfficiencyChart successRate={results.successRate} />
             <UsageChart
-              history={[
-                vehicleQueue.length,
-                vehicleQueue.length - results.allocations.length
-              ]}
+              history={parkedVehicles}
             />
             <p className="mt-2">Total Wasted Space: {results.wastedSpace}</p>
             <p>Success Rate: {results.successRate.toFixed(2)}%</p>
