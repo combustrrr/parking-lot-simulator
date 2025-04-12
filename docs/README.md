@@ -1,6 +1,24 @@
-# Parking Lot Simulator 🚗
+# Parking Lot Manager 🅿️🚗
 
-**Version:** 0.1.0
+**Version:** 1.0.0
+
+---
+
+## Introduction
+
+The **Parking Lot Manager** is a web application designed to simulate and visualize different memory allocation strategies in the context of a parking lot. It demonstrates how vehicles of varying sizes can be allocated to parking spaces using algorithms like **Best-Fit**, **First-Fit**, and **Worst-Fit**.
+
+This project provides a practical way to understand and compare these strategies, showcasing their impact on space efficiency and allocation success rates.
+
+## Purpose
+
+The primary purpose of this project is to provide an interactive and educational tool for learning about memory allocation algorithms. By simulating the allocation process in a parking lot scenario, users can gain insights into:
+
+*   How each strategy works in practice.
+*   The efficiency of each strategy in terms of space utilization.
+*   The success rate of parking all vehicles.
+
+## Key Features
 
 ---
 
@@ -8,11 +26,11 @@
 
 Welcome to the Parking Lot Simulator! This project, developed as a mini-project for term work, demonstrates memory allocation strategies (Best-Fit, First-Fit, Worst-Fit) commonly found in operating systems, applied to the practical scenario of parking lot allocation.
 
-The project consists of two main parts:
-1.  **React + TypeScript Frontend:** An interactive web application where users can define parking space sizes and vehicle sizes, choose an allocation algorithm, and visualize the simulation results.
-2.  **Python Script:** A standalone script (`python/memory_allocation.py`) that implements the same memory allocation algorithms, serving as a reference and fulfilling specific term work experiment requirements.
+The project consists of two main parts: the React + TypeScript Frontend and a Python Script. The frontend serves as an interactive web application where users can define parking space and vehicle sizes, select from different memory allocation strategies, and visualize the simulation's outcome. The standalone Python script (`python/memory_allocation.py`) implements the same strategies and acts as a reference, as well as fulfilling specific term work experiment requirements.
 
-This simulator provides a user-friendly way to understand and compare different resource allocation strategies.
+**Frontend:** An interactive web application where users can define parking space sizes and vehicle sizes, choose an allocation algorithm, and visualize the simulation results.
+
+**Python Script:** A standalone script (`python/memory_allocation.py`) that implements the same memory allocation algorithms, serving as a reference and fulfilling specific term work experiment requirements.
 
 ## ✨ Features
 
@@ -22,7 +40,7 @@ This simulator provides a user-friendly way to understand and compare different 
 *   **Reset Functionality:** Easily clear inputs and results to start a new simulation.
 *   **Reference Python Implementation:** A clear Python script demonstrating the core allocation logic.
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
 *   **Frontend:**
     *   React
@@ -34,7 +52,7 @@ This simulator provides a user-friendly way to understand and compare different 
     *   Python 3 (Standard Library)
 *   **Development:**
     *   Node.js & npm
-    *   ESLint (Linting)
+    *   ESLint (Code Linting)
     *   Git & GitHub (Version Control)
 
 ## 📁 Project Structure
@@ -132,6 +150,8 @@ Follow these steps to set up and run the project locally.
     *   Which vehicle (if any) is allocated to which space.
     *   The total amount of wasted space across all allocated spots.
     *   The success rate (percentage of vehicles successfully parked).
+    *   Graphical visualization of the parking lot status.
+    *   Graphical information related to occupancy, usage and efficiency of each allocation strategy.
 6.  **Reset:** Click the "Reset" button to clear all inputs and results for a new simulation.
 
 ### Python Script (`memory_allocation.py`)
