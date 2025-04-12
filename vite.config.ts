@@ -19,6 +19,17 @@ export default defineConfig({
   },
   server: {
     https: true,
+    middlewareMode: 'html',
+    setup: (server) => {
+      server.middlewares.use((req, res, next) => {
+        if (req.headers['x-forwarded-proto'] !== 'https') {
+          res.writeHead(301, { Location: `https://${req.headers.host}${req.url}` });
+          res.end();
+        } else {
+          next();
+        }
+      });
+    },
   },
   build: {
     minify: 'terser',
